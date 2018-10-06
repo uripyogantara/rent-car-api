@@ -15,7 +15,6 @@ class AuthUserController extends Controller
             // $token =  ->accessToken; 
             
             $user->token=$token->accessToken;
-            $user->expires_token=$token->token->expires_at;
             return response()->json(
                 $user, $this->successStatus); 
         } 
