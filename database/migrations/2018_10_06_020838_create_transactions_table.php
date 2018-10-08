@@ -17,8 +17,8 @@ class CreateTransactionsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('car_id');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->datetime('start_date');
+            $table->datetime('end_date');
             $table->unsignedTinyInteger('status');
             $table->timestamps();
 
