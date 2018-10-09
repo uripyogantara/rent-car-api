@@ -21,4 +21,13 @@ class TransactionController extends Controller
             'message'   => 'berhasil'
         ]);
     }
+
+    public function index(){
+        $user=request()->user();
+        $transactions=Transaction::where('user_id',$user['id'])
+        ->select('transactions.*','transaction_statuses.name as status_name')
+        ->join('transaction_statuses','transaction_statuses.id','=','transactions.status')
+        ->with('car')->get();
+        return $transactions;
+    }
 }
