@@ -19,4 +19,5 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('car', 'CarController@index');
     Route::post('transaction', 'TransactionController@store');
     Route::get('transaction', 'TransactionController@index');
+    Route::get('store/{id}/car', 'CarController@showByStore');
 });

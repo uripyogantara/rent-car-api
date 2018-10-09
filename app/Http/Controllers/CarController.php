@@ -13,8 +13,8 @@ class CarController extends Controller
      */
     public function index()
     {
-        $car=Car::with('store')->get();
-        return $car;
+        $cars=Car::with('store')->get();
+        return $cars;
     }
 
     /**
@@ -81,5 +81,10 @@ class CarController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function showByStore($store_id){
+        $cars=Car::with('store')->where('store_id',$store_id)->get();
+        return $cars;
     }
 }
