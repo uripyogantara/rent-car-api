@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Car;
+use App\Store;
 class CarController extends Controller
 {
     /**
@@ -86,5 +87,15 @@ class CarController extends Controller
     public function showByStore($store_id){
         $cars=Car::with('store')->where('store_id',$store_id)->get();
         return $cars;
+    }
+
+    public function storeCars(){
+        $user=request()->user();
+        $store=Store::where('user_id',$user['id'])->first();
+        $cars=Car::with('store')->where('store_id',$store->id)->get();
+        return $cars;
+
+        // $this->showByStore($store->id);
+        // $transactions=Transaction::where('store_id',$store->id)
     }
 }
